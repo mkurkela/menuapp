@@ -19,7 +19,7 @@ pipeline {
             }
         }
 
-        stage ('Deploy') {
+        stage ('Deploy Test') {
             steps {
                 echo "Deploy the software into test environment"
             }
