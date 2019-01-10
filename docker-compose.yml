@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+
+# Server container
+    server:
+        build: ./server
+        expose:
+            - ${APP_SERVER_PORT}
+        environment:
+            APP_SERVER_PORT: ${APP_SERVER_PORT}
+        ports:
+            - ${APP_SERVER_PORT}:${APP_SERVER_PORT}
+        volumes:
+            - ./server/graphql:/srv/app/graphql
+            - ./server/middleware:/srv/app/middleware
+            - ./server/models:/srv/app/models
+        command: npm run start
+
+# Client container
+    client:
+        build: ./front
+        environment:
+            - REACT_APP_PORT=${REACT_APP_PORT}
+        expose:
+            - ${REACT_APP_PORT}
+        ports:
+            - ${REACT_APP_PORT}:${REACT_APP_PORT}
+        volumes:
+            - ./front/src:/usr/app/src
+            - ./front/public:/usr/app/public
+        links:
+            - server
+        command: npm run start

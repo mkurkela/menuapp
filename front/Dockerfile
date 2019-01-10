@@ -1,17 +1,16 @@
-FROM node:8
+FROM node:8.7.0-alpine
 
 #App dir
-WORKDIR /usr/src/app
+RUN mkdir -p /usr/app
+WORKDIR /usr/app
 
 COPY package.json ./
 
-RUN npm install --only=production
+RUN npm install
 
-COPY . .
+COPY . /usr/app/
 
 RUN npm build
 
-EXPOSE 5000
-
-CMD [ "serve", "-s","build" ]
+CMD [ "npm", "start" ]
 
