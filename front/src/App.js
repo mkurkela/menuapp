@@ -5,17 +5,23 @@ import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 import AuthPage from './pages/Auth';
 import AdminPage from './pages/Admin';
 import MenuPage from './pages/Menu';
+import Navbar from './components/Navbar.js';
 
 class App extends Component {
   render() {
     return (
         <BrowserRouter>
-            <Switch>
-                <Redirect from="/" to="/menu" exact />
-                <Route menu="/menu" component={MenuPage} />
-                <Route auth="/auth" component={AuthPage} />
-                <Route admin="/admin" component={AdminPage} />
-            </Switch>
+            <React.Fragment>
+                <Navbar />
+                <main className="main-content">
+                    <Switch>
+                        <Redirect from="/" to="/menu" exact />
+                        <Route path="/auth" component={AuthPage} />
+                        <Route path="/menu" component={MenuPage} />
+                        <Route path="/admin" component={AdminPage} />
+                    </Switch>
+                </main>
+            </React.Fragment>
         </BrowserRouter>
     );
   }
