@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 
 import AuthPage from './pages/Auth';
 import AdminPage from './pages/Admin';
-import MenuPage from './pages/Menu';
+import MenuPage from './pages/menupage/Menu';
 import Navbar from './components/Navbar.js';
 
 class App extends Component {
