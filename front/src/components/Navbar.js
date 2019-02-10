@@ -18,9 +18,16 @@ const navbar = props => (
               {!context.token && <li>
                 <NavLink to="/auth"> Sisään </NavLink>
                </li>}
-              {context.token && <li>
-                <button onClick={context.logout}> Ulos </button>
-               </li>}
+              {context.token && (
+                <React.Fragment>
+                  <li>
+                    <NavLink to="/admin"> Admin </NavLink>
+                  </li>
+                  <li>
+                    <button onClick={context.logout}> Ulos </button>
+                  </li>
+                </React.Fragment>
+              )}
             </ul>
           </nav>
         </header>);
