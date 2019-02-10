@@ -16,10 +16,10 @@ const navbar = props => (
             <ul>
               <li><NavLink to="/menu"> Menu </NavLink></li>
               {!context.token && <li>
-                <NavLink to="/auth"> Kirjaudu </NavLink>
+                <NavLink to="/auth"> Sisään </NavLink>
                </li>}
               {context.token && <li>
-                <NavLink to="/auth"> Kirjaudu ulos </NavLink>
+                <button onClick={context.logout}> Ulos </button>
                </li>}
             </ul>
           </nav>
