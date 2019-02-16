@@ -23,6 +23,9 @@ pipeline {
             steps {
                 dir ('robot')
                 {
+                  sh 'python3 -m venv robot-env'
+                  sh 'source robot-env/bin/activate'
+                  sh 'pip3 install -r requirements.txt' 
                   sh './run_robot.sh tests/*'
                   step([
                       $class : 'RobotPublisher',
