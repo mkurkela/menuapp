@@ -23,9 +23,7 @@ pipeline {
             steps {
                 dir ('robot')
                 {
-                  step(
-                      sh './run_robot.sh tests/*'
-                  )
+                  sh './run_robot.sh tests/*'
                   step([
                       $class : 'RobotPublisher',
                       outputPath : outputDirectory,
