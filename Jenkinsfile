@@ -23,7 +23,7 @@ pipeline {
             steps {
                 dir ('robot')
                 {
-                    sh './robot/run_robot.sh tests/*'
+                    sh './run_robot.sh tests/*'
                 }
             }
         }
