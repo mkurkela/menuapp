@@ -34,6 +34,7 @@ pipeline {
                       otherFiles : "*.png",
                   ])
                }
+            }
         }
 
         stage ('Deploy Production') {
