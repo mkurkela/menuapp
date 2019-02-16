@@ -13,12 +13,6 @@ pipeline {
             }
         }
 
-        stage ('Build') {
-            steps {
-                echo "Build the software"
-            }
-        }
-
         stage ('Deploy Test') {
             steps {
                 echo "Deploy the software into test environment"
@@ -27,11 +21,14 @@ pipeline {
 
         stage ('Robot tests') {
             steps {
-                echo "Automated tests with operational"
+                dir ('robot')
+                {
+                    sh './robot/run_robot.sh tests/*'
+                }
             }
         }
 
-        stage ('Deploy') {
+        stage ('Deploy Production') {
             steps {
                 echo "Deploy the software into production"
             }
