@@ -23,9 +23,19 @@ pipeline {
             steps {
                 dir ('robot')
                 {
-                    sh './run_robot.sh tests/*'
-                }
-            }
+                  step(
+                      sh './run_robot.sh tests/*'
+                  )
+                  step([
+                      $class : 'RobotPublisher',
+                      outputPath : outputDirectory,
+                      outputFileName : "*.xml",
+                      disableArchiveOutput : false,
+                      passThreshold : 100,
+                      unstableThreshold: 100.0,
+                      otherFiles : "*.png",
+                  ])
+               }
         }
 
         stage ('Deploy Production') {
