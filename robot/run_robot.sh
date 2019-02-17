@@ -3,4 +3,4 @@
 robot --version
 which robot
 
-robot --pythonpath libs $@
+python3 -m robot --pythonpath libs $@
