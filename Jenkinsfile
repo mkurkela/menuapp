@@ -27,15 +27,6 @@ pipeline {
                   sh 'source robot-env/bin/activate'
                   sh 'pip3 install -r requirements.txt' 
                   sh './run_robot.sh tests/*'
-                  step([
-                      $class : 'RobotPublisher',
-                      outputPath : outputDirectory,
-                      outputFileName : "*.xml",
-                      disableArchiveOutput : false,
-                      passThreshold : 100,
-                      unstableThreshold: 100.0,
-                      otherFiles : "*.png",
-                  ])
                }
             }
         }
@@ -50,6 +41,20 @@ pipeline {
             steps {
                 echo "Automated tests in real production environemnt"
             }
+        }
+        post {
+            always {
+                  step([
+                      $class : 'RobotPublisher',
+                      outputPath : '**/robot/',
+                      outputFileName : '*.xml',
+                      disableArchiveOutput : false,
+                      passThreshold : 100,
+                      unstableThreshold: 100.0,
+                      otherFiles : "*.png",
+                  ])
+
+            } 
         }
 
     }
