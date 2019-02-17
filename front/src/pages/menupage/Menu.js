@@ -14,14 +14,16 @@ class MenuPage extends Component {
     };
   }
 
-  componentDidMount() {
+  fetchMenu() {
     this.setState({ isLoading: true});
     const requestBody = {
       query: `
       query {
         categories {
+          _id
           name
           dishes {
+            _id
             number
             name
             price
@@ -41,10 +43,15 @@ class MenuPage extends Component {
       }
       return res.json();
     }).then(json => {
-      this.setState({ data: json, isLoading: false })    
+      const menu = json.data;
+      this.setState({ data: menu, isLoading: false })    
     }).catch(error => {
       this.setState({error, isLoading: false});
     });
+
+  }
+  componentDidMount() {
+    this.fetchMenu();
   }
 
   const 
@@ -61,8 +68,15 @@ class MenuPage extends Component {
     if (null === data)
       return <p> Odotetaan menua...</p>;
 
+    console.log(data);
+    const menu = data.categories.map(item => {
+      return <li key={item._id} className="menu__list-item">{item.name}</li>;
+    });
+
     return (
-      <h1> Menu page!</h1>
+      <React.Fragment>
+      <ul className="menu__list">{menu}</ul>
+      </React.Fragment>
     );
   }
 }

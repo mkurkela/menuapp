@@ -23,7 +23,7 @@ module.exports = {
         }
         const dish = new Dish({
             name: args.dishInput.name,
-            number: args.dishInput.number,
+            number: +args.dishInput.number,
             price: +args.dishInput.price,
             belongs: '5c2b7432640822135d6aa4cf'
         });
