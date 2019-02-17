@@ -42,20 +42,20 @@ pipeline {
                 echo "Automated tests in real production environemnt"
             }
         }
-        post {
-            always {
-                  step([
-                      $class : 'RobotPublisher',
-                      outputPath : '**/robot/',
-                      outputFileName : '*.xml',
-                      disableArchiveOutput : false,
-                      passThreshold : 100,
-                      unstableThreshold: 100.0,
-                      otherFiles : "*.png",
-                  ])
 
-            } 
-        }
+    }
+    post {
+      always {
+        step([
+            $class : 'RobotPublisher',
+            outputPath : '**/robot/',
+            outputFileName : '*.xml',
+            disableArchiveOutput : false,
+            passThreshold : 100,
+            unstableThreshold: 100.0,
+            otherFiles : "*.png",
+        ])
 
+      } 
     }
 }
