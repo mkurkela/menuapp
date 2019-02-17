@@ -48,7 +48,7 @@ pipeline {
       always {
         step([
             $class : 'RobotPublisher',
-            outputPath : '**/robot/',
+            outputPath : 'robot/',
             outputFileName : '*.xml',
             disableArchiveOutput : false,
             passThreshold : 100,
