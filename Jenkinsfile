@@ -16,12 +16,12 @@ pipeline {
             dir ('front')
             {
               sh 'sudo docker build -t sanmakko/menuapp_front:latest -f Dockerfile-prod .'
-              sh 'sudo docker run --rm -d expose 80:80 sanmakko/menuapp_front:latest 
+              sh 'sudo docker run --rm -d expose 80:80 sanmakko/menuapp_front:latest' 
             }
             dir ('server')
             {
               sh 'sudo docker build -t sanmakko/menuapp_server:latest -f Dockerfile .'
-              sh 'sudo docker run --rm -d expose 80:80 sanmakko/menuapp_server:latest 
+              sh 'sudo docker run --rm -d expose 5000:5000 sanmakko/menuapp_server:latest'
             }
           }
         }
