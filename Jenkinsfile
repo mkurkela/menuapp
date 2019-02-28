@@ -13,6 +13,8 @@ pipeline {
             label 'ec2-fleet'
           }
           steps {
+            git changelog: false, credentialsId: 'e652773a-5f1d-41ef-a295-999308d1035b', poll: false, url: 'git@github.com:mkurkela/menuapp.git'
+             
             dir ('front')
             {
               sh 'sudo docker build -t sanmakko/menuapp_front:latest -f Dockerfile-prod .'
