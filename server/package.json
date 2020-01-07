@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -18,14 +18,15 @@
   "homepage": "https://github.com/mkurkela/menuapp#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "body-parser": "^1.18.3",
-    "express": "^4.16.4",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
     "express-graphql": "^0.7.1",
-    "graphql": "^14.0.2",
+    "graphql": "^14.5.8",
     "jsonwebtoken": "^8.4.0",
-    "mongoose": "^5.4.1"
+    "mongoose": "^5.8.4",
+    "package.json": "^2.0.1"
   },
   "devDependencies": {
-    "nodemon": "^1.18.9"
+    "nodemon": "^1.19.4"
   }
 }

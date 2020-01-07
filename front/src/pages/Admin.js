@@ -71,7 +71,7 @@ class AdminPage extends Component {
     };
 
     const token = this.context.token;
-    fetch('http://localhost:5000/graphql', {
+    fetch(`${process.env.REACT_APP_API_URL}:${process.env.REACT_APP_API_PORT}/graphql`, {
       method: 'POST',
       body: JSON.stringify(requestBody),
       headers: {
